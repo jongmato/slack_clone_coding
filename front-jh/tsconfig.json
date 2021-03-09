@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,  //import * as React from 'react'; -> import React from 'react'; 할 수 있게 해준다.  
+        "sourceMap": true,
+        "lib": ["ES2020", "DOM"],
+        "jsx": "react",
+        "module": "esnext",
+        "moduleResolution": "Node",
+        "target": "es5",
+        "strict": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            // import할때 절대 경로 처럼 입력하려고 path를 미리 설정
+            "@hooks/*": ["hooks/*"],
+            "@components/*": ["components/*"],
+            "@layouts/*": ["layouts/*"],
+            "@pages/*": ["pages/*"],
+            "@utils/*": ["utils/*"],
+            "@typings/*": ["typings/*"]
+        }
+    }
+}
