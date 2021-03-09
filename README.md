@@ -20,8 +20,6 @@ back : nest.js typeorm, mysql
 
 # front 만들기
 
----
-
 > 앞에 .이 붙은 획장자가 없는 파일은 숨긴 파일이다.(설정 파일)
 
 ## history
