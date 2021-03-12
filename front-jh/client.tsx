@@ -1,14 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from '@layouts/App';
 
 render(
-    // <BrowserRouter>
-    //     <App />
-    // </BrowserRouter>,
-    // document.querySelector('#app'),
-    <App />, document.querySelector('#app'),
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.querySelector('#app'),
 );
 
 // pages - 서비스 페이지
