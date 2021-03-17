@@ -1,8 +1,8 @@
 # 제로초 슬랙 클론 코딩 강의
 Slack + React => sleact
 icon, favicon 등은 슬랙에서 그대로 가져와 사용
-css 슬랙 최대한 비슷하게 작성 
-front : react, swr
+html, css 개발자 도구를 이용해서 최대한 슬랙에서 가져와서 사용 
+front : react, swr(redux대체 상태관리 react hook)
 back : nest.js typeorm, mysql
 
 # 백그라운드 세팅
@@ -23,23 +23,9 @@ back : nest.js typeorm, mysql
 
 > 앞에 .이 붙은 획장자가 없는 파일은 숨긴 파일이다.(설정 파일)
 
-## 공부한 내용
-- npm rm lib -> 해당 패키지를 삭제할 수 있다.
-- npm install @pmmmwh/react-refresh-webpack-plugin 명령어 실행시 오류가 발생한 경우 
-- npm ERR! Fix the upstream dependency conflict, or retry | npm ERR! this command with --force, or --legacy-peer-deps
-- 명령어 앞에 --force || --legacy-peer-deps 키워드를 붙여 준다 (ex npm install --force @pmmmwh/react-refresh-webpack-plugin)
-- SPA에서는 url은 없고 index.html만 존재한다. (메인 주소만 존재한다.)
-- historyApi가 가짜로 url을 만들어 준다. (가짜 주소를 뒤에 입력을 해준다.)
-- 새로고침할 경우 url 주소는 서버로 전송된다. -> 서버는 메인 주소 url만 알고 다른 경오는 모른다. (ex localhost:8080만 알고 localhost:8080/login 등 뒤에 붙은 path는 모름)
-- 즉 어떤 path를 입력하든 메인 페이지(index.html)로 가게된다.
-- webpack devServer에서 historyApiFallback: true,로 설정해주면  devServer가 가짜주소(메인 주소 뒤에 붙는 /login, /signup 등등)를 있는 주소처럼 적용하게 해준다.
-- SPA의 경우 페이지 수가 많아 지면 (js파일의 용량이 커진다) 화면 로딩 시간이 길어져 UX가 안좋아 질 수 있다. 그럴경우 코드스플리팅을 사용한다.
-- 코드 스플리팅을 하게 되면, 지금 당장 필요한 코드가 아니라면 따로 분리시켜서, 나중에 필요할때 불러와서 사용 할 수 있습니다. 이를 통하여, 페이지의 로딩 속도를 개선 할 수 있다.
-- 코드 스플리팅으로 당장 필요한 컴포넌트가 아닌 경우 불러오지 않고, 필요한 컴포넌트는 그때그때 불러온다.
-- 어떤식으로 분리하나? -> 페이지 별로 분리 한다(페이지 단위로 적용한다.) 예를 들어 login페이지에서는 signup 페이지를 불러올 필요가 없다. / SSR과 SSR이 필요없는 컴포넌트를 분리한다. (서버 영역에서 용량 감소)
-- @loadable/component 라이브러리를 사용해서 코드 스플리팅 해준다. (ex const LogIn = loadable(() => import('@pages/LogIn'));)
-- @emotion/styled에서 styled.스타일을 적용할 태그를 입력 (const Header = styled.header`css작성` -> header태그 css를 작성한다는 의미)
-- 이벤트 처리할 때 useCallback()을 사용해야 성능 최적화를 할 수 있다. (ex const onChangeEmail = useCallback( () => {}, []))
+## 공부한 내용 
+
+[메모보기](./notes.md)
 
 ## history
 
@@ -84,8 +70,9 @@ back : nest.js typeorm, mysql
     - ./dist/app.js로 웹팩이 만들어낸 js파일 불러옴
 7. tsconfig-for-webpack-config.json
     - webpack할 때 webpack.config.ts를 인식 못하는 문제
-    - npm i cross-env
-    - package.json의 scripts의 build를 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack
+    - TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack 명령어가 리눅스기반에서는 실행이 되지만 윈도우에서는 실행이 안됨 실행하려면 앞에 cross-env 키워드를 추가 해야함 
+    - npm i cross-env -> 윈도우와 리눅스에서 build 명령어를 실행할 수 있게 해준다. 
+    - package.json의 scripts에 build 명령어 추가 cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack
     - npm run build
     - index.html 실행해보기
 8. hot reloading 설정
@@ -106,7 +93,8 @@ back : nest.js typeorm, mysql
     - 페이지간 공통되는 틀은 layouts (공통 레이아웃)
     - 개별 컴포넌트는 components (짜잘한 컴포넌트들)
     - 커스텀훅은 hooks, 기타 함수는 utils 
-    - 각 컴포넌트는 컴포넌트 폴더 아래 index.tsx(JSX)와 styles.tsx(스타일링)
+    - 먼저 각각 폴더를 만들고 폴더 안에 컴포넌트랑 스타일을 분리해서 파일을 만든다. 
+    - 각 컴포넌트는 컴포넌트 폴더 아래 index.tsx(JSX - 컴포넌트 파일)와 styles.tsx(스타일 파일)
 12. ts와 webpack에서 alias 지정
     - npm i -D tsconfig-paths
     - tsconfig에서 baseUrl와 paths 설정
@@ -175,3 +163,18 @@ back : nest.js typeorm, mysql
     - 결과물이 2차원 배열 꼴로 나옴.
     - 첫 번째 인자가 주소 문자열이 아닌 주소를 리턴하는 함수
     - 이 함수의 매개변수로 페이지가 들어있어서 현재 몇 페이지인지 알 수 있음.
+28. Workspace에 소켓 연결하기
+    - socket.emit이 클라이언트에서 서버로, socket.on이 서버에서 클라이언트로
+29. DMList에 onlineList, dm 이벤트 연결
+30. @components/ChatList 작성 및 @components/Chat 구현
+    - npm i react-custom-scrollbars @types/react-custom-scrollbars
+31. makeSection 구현
+    - npm i dayjs
+    - dayjs는 moment를 대체함
+32. 프로파일링 하면서 Chat에 memo 적용하기
+33. 인피니트 스크롤링 구현
+34. @components/ChannelList 작성
+35. @pages/ChannelMessage 작성
+36. Channel Chat 보내보기
+37. 빌드 설정
+38. 빌드 결과물인 JS와 html을 서버개발자에게 전달하기
