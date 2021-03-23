@@ -1,9 +1,9 @@
 # 제로초 슬랙 클론 코딩 강의
-Slack + React => sleact
-icon, favicon 등은 슬랙에서 그대로 가져와 사용
-html, css 개발자 도구를 이용해서 최대한 슬랙에서 가져와서 사용 
-front : react, swr(redux대체 상태관리 react hook)
-back : nest.js typeorm, mysql
+- Slack + React => sleact
+- icon, favicon 등은 슬랙에서 그대로 가져와 사용
+- html, css 개발자 도구를 이용해서 최대한 슬랙에서 가져와서 사용 
+- front : react, swr(redux대체 상태관리 react hook)
+- back : nest.js typeorm, mysql
 
 # 백그라운드 세팅
 
@@ -123,20 +123,23 @@ back : nest.js typeorm, mysql
     - npm i axios
     - CORS 문제를 피하기 위해서 devServer에 proxy 세팅
     - CORS는 브라우저에서 다른 도메인의 서버로 요청을 보낼 때 발생
-    - 같은 도메인의 서버로 요청을 보내거나, 서버끼리 요청을 보낼 때는 발생하지 않음
-    - 따라서 같은 도메인인 proxy서버를 띄워 CORS를 피해갈 수 있음.
+    - 프론트와 같은 도메인의 서버로 요청을 보내거나, 서버끼리 요청을 보낼 때는 발생하지 않음
+    - 따라서 같은 도메인인 proxy서버를 띄워 CORS를 피해갈 수 있음. (단 프론트와 백 둘다 localhost주소여야 함)
 18. useInput 커스텀 훅 만들기
     - 커스텀 훅으로 훅들간에 중복된 것을 제거할 수 있음
     - 훅 내부에 훅을 작성할 수 있는 유일한 케이스
     - useCallback은 return 안에 들어있는 함수에 꼭 적용해주자
     - useMemo는 return 안에 들어있는 값에 적용하자
 19. @pages/LogIn 작성 및 SWR
+    - 로그인 페이지는 회원가입 페이지와 매우 유사하다.
     - 로그인 한 사람이 회원가입/로그인 페이지에 접근한다면?
     - GET 요청은 SWR로 하는 것도 괜찮음
     - npm i swr
     - SWR에 fetcher(axios를 사용)를 달아줌.
     - 로그인했음을 증명하기 위해 withCredentials: true 잊으면 안 됨.
 20. @layouts/Workspace 작성
+    - Workspace -> 로그인하고 계속 사용되는 화면 
+    - 로그인에 성공하는 순간 workspace/channel로 이동된다.
     - 눈에 띄는 구역 단위로 스타일드컴포넌트로 만들어둠.
     - 구역 내부의 태그들은 스타일드컴포넌트로 만들면 변수명 지어야 하니 css선택자로 선택
 21. 그라바타
