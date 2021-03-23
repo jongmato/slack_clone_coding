@@ -4,7 +4,7 @@ import React from 'react';
 const Channel = () => {
     return (
         <Workspace>
-            <div>hi</div>
+            <div>channel</div>
         </Workspace>
     );
 };
