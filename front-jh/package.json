@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development",
-        "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
+        "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Jongmato",
