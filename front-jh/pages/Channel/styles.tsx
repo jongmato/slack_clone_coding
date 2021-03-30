@@ -23,6 +23,7 @@ export const Header = styled.header`
         flex: 1;
         justify-content: flex-end;
         align-items: center;
+    }
 `;
 
 export const DragOver = styled.div`
