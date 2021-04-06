@@ -41,11 +41,11 @@ const LogIn = () => {
         return <Redirect to="/workspace/sleact/channel/일반" />;
     }
 
-    // console.log(error, userData);
-    // if (!error && userData) {
-    //     console.log('로그인됨', userData);
-    //     return <Redirect to="/workspace/sleact/channel/일반" />;
-    // }
+    // console.log(error, data);
+    if (!error && data) {
+        console.log('로그인됨', data);
+        return <Redirect to="/workspace/sleact/channel/일반" />;
+    }
 
     return (
         <div id="container">
