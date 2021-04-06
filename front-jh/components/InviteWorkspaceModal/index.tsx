@@ -33,7 +33,7 @@ const InviteWorkspaceModal: FC<Props> = ({ show, onCloseModal, setShowInviteWork
                 .post(`/api/workspaces/${workspace}/members`, {
                     email: newMember,
                 })
-                .then((response) => {
+                .then(() => {
                     revalidateMember();
                     setShowInviteWorkspaceModal(false);
                     setNewMember('');
