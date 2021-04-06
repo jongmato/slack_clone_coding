@@ -12,7 +12,7 @@ import useSocket from '@hooks/useSocket';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { IChannel, IChat, IUser } from '@typings/db';
 import InviteChannelModal from '@components/InviteChannelModal';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Channel = () => {
     const { workspace, channel } = useParams<{ workspace: string; channel: string }>();
@@ -196,7 +196,6 @@ const Channel = () => {
                 onCloseModal={onCloseModal}
                 setShowInviteChannelModal={setShowInviteChannelModal}
             />
-            <ToastContainer position="bottom-center" />
             {dragOver && <DragOver>업로드</DragOver>}
         </Container>
     );
