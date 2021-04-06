@@ -21,6 +21,7 @@ const Chat: FC<Props> = memo(({ data }) => {
                 <img src={`${BACK_URL}/${data.content}`} style={{ maxHeight: 200 }} />
             ) : (
                 regexifyString({
+                    input: data.content,
                     pattern: /@\[(.+?)]\((\d+?)\)|\n/g,
                     decorator(match, index) {
                         const arr: string[] | null = match.match(/@\[(.+?)]\((\d+?)\)/)!;
@@ -33,10 +34,9 @@ const Chat: FC<Props> = memo(({ data }) => {
                         }
                         return <br key={index} />;
                     },
-                    input: data.content,
                 })
             ),
-        [data.content],
+        [workspace, data.content],
     );
     return (
         <ChatWrapper>
