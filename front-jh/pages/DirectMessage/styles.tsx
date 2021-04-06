@@ -5,8 +5,8 @@ export const Container = styled.div`
     flex-wrap: wrap;
     height: calc(100vh - 38px);
     flex-flow: column;
+    position: relative;
 `;
-
 
 export const Header = styled.header`
     height: 64px;
