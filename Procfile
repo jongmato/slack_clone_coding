@@ -1,1 +1,1 @@
-web: node dist/app.js
+web: node front-jh/dist/app.js
