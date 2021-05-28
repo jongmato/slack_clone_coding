@@ -1,1 +1,0 @@
-web: node front-jh/dist/app.js
