@@ -11,7 +11,7 @@ const config: webpack.Configuration = {
     mode: isDevelopment ? 'development' : 'production',
     devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],//바벨이 처리할 확장자들 입력
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'], //바벨이 처리할 확장자들 입력
         alias: {
             // import할때 절대 경로 처럼 입력하려고 path를 미리 설정
             '@hooks': path.resolve(__dirname, 'hooks'),
